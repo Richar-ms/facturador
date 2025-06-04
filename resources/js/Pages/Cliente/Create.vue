@@ -30,70 +30,83 @@ const createCliente = () => {
 
 <template>
     <AuthenticatedLayout>
-        <div class="py-12">
-            <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div class="py-12 bg-gray-100 min-h-screen">
+            <div class="mx-auto max-w-xl sm:px-6 lg:px-8">
+                <div class="bg-white shadow-lg rounded-lg p-8">
 
-                <form @submit.prevent="createCliente" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                    
-                    <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-                            Nombres
-                        </label>
-                        <input 
-                            type="text"
-                            v-model="form.nombres"
-                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-                            required
-                            autocomplete="off"
+                    <!-- Botón de regreso -->
+                    <div class="mb-6">
+                        <Link 
+                            :href="route('cliente.index')" 
+                            class="inline-block bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-2 px-4 rounded transition"
                         >
+                            ← Volver al inicio
+                        </Link>
                     </div>
 
-                    <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-                            Apellido Paterno
-                        </label>
-                        <input 
-                            type="text"
-                            v-model="form.pri_ape"
-                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            required
-                            autocomplete="off"
-                        >
-                    </div>
+                    <h2 class="text-2xl font-semibold text-gray-800 mb-6">Registrar Cliente</h2>
 
-                    <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-                            Apellido Materno
-                        </label>
-                        <input 
-                            type="text"
-                            v-model="form.seg_ape"
-                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            required
-                            autocomplete="off"
-                        >
-                    </div>
+                    <form @submit.prevent="createCliente" class="space-y-6">
+                        <!-- Campos del formulario (igual que antes) -->
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2" for="nombres">Nombres</label>
+                            <input 
+                                type="text"
+                                id="nombres"
+                                v-model="form.nombres"
+                                class="w-full border border-gray-300 rounded-md shadow-sm py-2 px-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                                required
+                                autocomplete="off"
+                            >
+                        </div>
 
-                    <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-                            DNI
-                        </label>
-                        <input 
-                            type="text"
-                            v-model="form.docu_num"
-                            class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            required
-                            autocomplete="off"
-                        >
-                    </div>
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2" for="pri_ape">Apellido Paterno</label>
+                            <input 
+                                type="text"
+                                id="pri_ape"
+                                v-model="form.pri_ape"
+                                class="w-full border border-gray-300 rounded-md shadow-sm py-2 px-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                                required
+                                autocomplete="off"
+                            >
+                        </div>
 
-                    <div class="mb-4">
-                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                            Guardar
-                        </button>
-                    </div>
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2" for="seg_ape">Apellido Materno</label>
+                            <input 
+                                type="text"
+                                id="seg_ape"
+                                v-model="form.seg_ape"
+                                class="w-full border border-gray-300 rounded-md shadow-sm py-2 px-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                                required
+                                autocomplete="off"
+                            >
+                        </div>
 
-                </form>
+                        <div>
+                            <label class="block text-gray-700 font-medium mb-2" for="docu_num">DNI</label>
+                            <input 
+                                type="text"
+                                id="docu_num"
+                                v-model="form.docu_num"
+                                class="w-full border border-gray-300 rounded-md shadow-sm py-2 px-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+                                required
+                                autocomplete="off"
+                            >
+                        </div>
+
+                        <!-- Botón Guardar -->
+                        <div>
+                            <button 
+                                type="submit" 
+                                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md shadow transition"
+                            >
+                                Guardar
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </AuthenticatedLayout>

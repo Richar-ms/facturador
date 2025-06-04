@@ -43,4 +43,5 @@ class ClienteController extends Controller
 
         return $pdf->download('clientes.pdf');
     }
+    
 }

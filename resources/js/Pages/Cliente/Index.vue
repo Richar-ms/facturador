@@ -4,57 +4,57 @@ import { Head, Link, usePage } from '@inertiajs/vue3';
 
 const page = usePage()
 
-//console.log(page.props.clientes);
-
 const descargarPdf = () => {
-
     window.open(route('cliente.exportarPdf'), '_blank')
 }
-
 </script>
 
 <template>
     <AuthenticatedLayout>
-        <div class="py-12">
-            <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+        <div class="py-12 bg-gray-100 min-h-screen">
+            <div class="mx-auto max-w-6xl sm:px-6 lg:px-8">
 
-                <div class="flex">
-                    <div class="p-4 m-2">
-                        <Link
-                            :href="route('cliente.create')"
-                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                            Nuevo
-                        </Link>
-                    </div>
+                <!-- Botones -->
+                <div class="flex justify-between mb-6">
+                    <Link
+                        :href="route('cliente.create')"
+                        class="inline-flex items-center bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded shadow transition"
+                    >
+                        + Nuevo Cliente
+                    </Link>
 
-                    <div class="p-4 m-2">
-                        <button
-                            @click="descargarPdf" 
-                            class="bg-blue-500 text-white px-4 rounded"
-                        >
-                            Descargar PDF
-                        </button>
-                    </div>
+                    <button
+                        @click="descargarPdf"
+                        class="inline-flex items-center bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded shadow transition"
+                    >
+                        Descargar PDF
+                    </button>
                 </div>
 
-                <div class="overflow-x-auto">
-                    <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+                <!-- Tabla -->
+                <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+                    <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-800 text-white">
                             <tr>
-                                <th class="py-3 px-4 uppercase font-semibold text-sm text-left">Nombres</th>
-                                <th class="py-3 px-4 uppercase font-semibold text-sm text-left">Primer Apellido</th>
-                                <th class="py-3 px-4 uppercase font-semibold text-sm text-left">Segundo Apellido</th>
+                                <th class="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider">Nombres</th>
+                                <th class="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider">Primer Apellido</th>
+                                <th class="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider">Segundo Apellido</th>
                             </tr>
                         </thead>
-                        <tbody class="text-gray-700">
-                            <tr v-for="cliente in page.props.clientes" :key="cliente.id" class="border-b border-gray-200 hover:bg-gray-100">
-                                <td class="py-3 px-4">{{ cliente.nombres }}</td>
-                                <td class="py-3 px-4">{{ cliente.pri_ape }}</td>
-                                <td class="py-3 px-4">{{ cliente.seg_ape }}</td>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr 
+                                v-for="cliente in page.props.clientes" 
+                                :key="cliente.id" 
+                                class="hover:bg-gray-100 transition"
+                            >
+                                <td class="px-6 py-4 whitespace-nowrap">{{ cliente.nombres }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ cliente.pri_ape }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ cliente.seg_ape }}</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+
             </div>
         </div>
     </AuthenticatedLayout>

@@ -25,6 +25,10 @@ Route::get('/cliente/create', [ClienteController::class, 'create'])->name('clien
 Route::post('/cliente/store', [ClienteController::class, 'store'])->name('cliente.store');
 Route::get('/cliente/exportar/pdf', [ClienteController::class, 'exportarPdf'])->name('cliente.exportarPdf');
 
+Route::get('/cliente/edit/{id}', [ClienteController::class, 'edit'])->name('cliente.edit');
+Route::post('/cliente/update', [ClienteController::class, 'update'])->name('cliente.update');
+Route::get('/cliente/delete/{id}', [ClienteController::class, 'delete'])->name('cliente.delete');
+Route::delete('/cliente/{cliente}', [ClienteController::class, 'destroy'])->name('cliente.destroy');
 
 
 Route::middleware('auth')->group(function () {
